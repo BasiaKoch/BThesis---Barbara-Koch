@@ -1,0 +1,19 @@
+{
+    "channel_names": {
+        "0": "t1",
+        "1": "t1ce",
+        "2": "t2",
+        "3": "flair"
+    },
+    "labels": {
+        "background": 0,
+        "tumor_core": 1,
+        "enhancing_tumor": 2,
+        "edema": 3
+    },
+    "numTraining": 296,
+    "numTest": 73,
+    "file_ending": ".nii",
+    "dataset_description": "BraTS 2020 dataset",
+    "modality": ["T1", "T1ce", "T2", "FLAIR"]
+}
