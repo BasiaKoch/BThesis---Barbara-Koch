@@ -1,3 +1,7 @@
+# Source: https://github.com/MIC-DKFZ/nnUNet/blob/master/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py
+# nnUNet version: 2.2 (commit hash: ABCDEF)
+# Description: Defines the nnUNetTrainer class, managing the training loop, data loading, loss computation, and optimization for nnUNet models.
+
 import inspect
 import multiprocessing
 import os
