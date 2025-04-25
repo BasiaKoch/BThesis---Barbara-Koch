@@ -1,0 +1,6 @@
+ nnUNetv2_evaluate_folder \
+  /home/u873859/nnUNet/NNunet/nnUNet_raw/labelsTs \
+  /home/u873859/nnUNet/NNunet/nnUNet_results/Dataset001_BraTS2020/preds_fold0_val \
+  -djfile /home/u873859/nnUNet/NNunet/nnUNet_raw/dataset.json \
+  -pfile /home/u873859/nnUNet/NNunet/nnUNet_results/Dataset001_BraTS2020/nnUNetTrainer__nnUNetPlans__3d_fullres/plans.json \
+  -o /home/u873859/nnUNet/NNunet/eval_output/fold0_eval.json
