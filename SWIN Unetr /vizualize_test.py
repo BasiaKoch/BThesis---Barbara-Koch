@@ -1,4 +1,4 @@
-##code nexessary to evaluate and visualise the predictions
+##code necessary to evaluate and visualise the predictions
 
 from tqdm import tqdm
 import os
