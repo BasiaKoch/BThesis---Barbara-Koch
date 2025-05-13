@@ -11,7 +11,7 @@ Enhancing Tumor (ET)
 By training both models under the same resource constraints and without pretrained weights, the project explores their strengths, limitations, and suitability for different clinical objectives.
 
 🗂 Repository Structure
-
+```text
 BThesis---Barbara-Koch/
 │
 ├── nnUnet/                  # Training and evaluation of nnU-Net
@@ -19,6 +19,7 @@ BThesis---Barbara-Koch/
 ├── testing_significance/    # Scripts for statistical analysis (e.g., Wilcoxon test)
 ├── synthetic_visualization.py  # Script to simulate and visualize Dice/IoU distributions
 └── README.md                # You're here!
+```
 
 🔍 What You’ll Find
 This project combines practical implementation, quantitative evaluation, and statistical testing:
