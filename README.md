@@ -30,7 +30,6 @@ BThesis---Barbara-Koch/
 ├── nnUnet/                     # Training and evaluation of nnU-Net
 ├── SWIN_UNETR/                 # Fine-tuning Swin UNETR for BraTS2020
 ├── testing_significance/       # Scripts for statistical analysis (e.g., Wilcoxon test)
-├── synthetic_visualization.py  # Script to simulate and visualize Dice/IoU distributions
 └── README.md                   # You're here!
 ```
 ## 🧠 Pretrained Model Weights
