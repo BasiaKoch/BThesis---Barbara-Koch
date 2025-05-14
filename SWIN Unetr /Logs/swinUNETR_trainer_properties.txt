@@ -1,0 +1,328 @@
+device:cuda
+display_plot:True
+net:SwinUNETR(
+  (swinViT): SwinTransformer(
+    (patch_embed): PatchEmbed(
+      (proj): Conv3d(4, 24, kernel_size=(2, 2, 2), stride=(2, 2, 2))
+    )
+    (pos_drop): Dropout(p=0.0, inplace=False)
+    (layers1): ModuleList(
+      (0): BasicLayer(
+        (blocks): ModuleList(
+          (0-1): 2 x SwinTransformerBlock(
+            (norm1): LayerNorm((24,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=24, out_features=72, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=24, out_features=24, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): Identity()
+            (norm2): LayerNorm((24,), eps=1e-05, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (linear1): Linear(in_features=24, out_features=96, bias=True)
+              (linear2): Linear(in_features=96, out_features=24, bias=True)
+              (fn): GELU(approximate='none')
+              (drop1): Dropout(p=0.0, inplace=False)
+              (drop2): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=192, out_features=48, bias=False)
+          (norm): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (layers2): ModuleList(
+      (0): BasicLayer(
+        (blocks): ModuleList(
+          (0-1): 2 x SwinTransformerBlock(
+            (norm1): LayerNorm((48,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=48, out_features=144, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=48, out_features=48, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): Identity()
+            (norm2): LayerNorm((48,), eps=1e-05, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (linear1): Linear(in_features=48, out_features=192, bias=True)
+              (linear2): Linear(in_features=192, out_features=48, bias=True)
+              (fn): GELU(approximate='none')
+              (drop1): Dropout(p=0.0, inplace=False)
+              (drop2): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=384, out_features=96, bias=False)
+          (norm): LayerNorm((384,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (layers3): ModuleList(
+      (0): BasicLayer(
+        (blocks): ModuleList(
+          (0-1): 2 x SwinTransformerBlock(
+            (norm1): LayerNorm((96,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=96, out_features=288, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=96, out_features=96, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): Identity()
+            (norm2): LayerNorm((96,), eps=1e-05, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (linear1): Linear(in_features=96, out_features=384, bias=True)
+              (linear2): Linear(in_features=384, out_features=96, bias=True)
+              (fn): GELU(approximate='none')
+              (drop1): Dropout(p=0.0, inplace=False)
+              (drop2): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=768, out_features=192, bias=False)
+          (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (layers4): ModuleList(
+      (0): BasicLayer(
+        (blocks): ModuleList(
+          (0-1): 2 x SwinTransformerBlock(
+            (norm1): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+            (attn): WindowAttention(
+              (qkv): Linear(in_features=192, out_features=576, bias=True)
+              (attn_drop): Dropout(p=0.0, inplace=False)
+              (proj): Linear(in_features=192, out_features=192, bias=True)
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (softmax): Softmax(dim=-1)
+            )
+            (drop_path): Identity()
+            (norm2): LayerNorm((192,), eps=1e-05, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (linear1): Linear(in_features=192, out_features=768, bias=True)
+              (linear2): Linear(in_features=768, out_features=192, bias=True)
+              (fn): GELU(approximate='none')
+              (drop1): Dropout(p=0.0, inplace=False)
+              (drop2): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (downsample): PatchMerging(
+          (reduction): Linear(in_features=1536, out_features=384, bias=False)
+          (norm): LayerNorm((1536,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (encoder1): UnetrBasicBlock(
+    (layer): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(4, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(24, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (conv3): Convolution(
+        (conv): Conv3d(4, 24, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+      )
+      (norm3): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (encoder2): UnetrBasicBlock(
+    (layer): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(24, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(24, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (encoder3): UnetrBasicBlock(
+    (layer): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (encoder4): UnetrBasicBlock(
+    (layer): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(96, 96, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(96, 96, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(96, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(96, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (encoder10): UnetrBasicBlock(
+    (layer): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(384, 384, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(384, 384, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(384, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(384, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (decoder5): UnetrUpBlock(
+    (transp_conv): Convolution(
+      (conv): ConvTranspose3d(384, 192, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    )
+    (conv_block): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(384, 192, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(192, 192, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(192, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(192, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (conv3): Convolution(
+        (conv): Conv3d(384, 192, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+      )
+      (norm3): InstanceNorm3d(192, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (decoder4): UnetrUpBlock(
+    (transp_conv): Convolution(
+      (conv): ConvTranspose3d(192, 96, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    )
+    (conv_block): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(192, 96, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(96, 96, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(96, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(96, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (conv3): Convolution(
+        (conv): Conv3d(192, 96, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+      )
+      (norm3): InstanceNorm3d(96, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (decoder3): UnetrUpBlock(
+    (transp_conv): Convolution(
+      (conv): ConvTranspose3d(96, 48, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    )
+    (conv_block): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(96, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(48, 48, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (conv3): Convolution(
+        (conv): Conv3d(96, 48, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+      )
+      (norm3): InstanceNorm3d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (decoder2): UnetrUpBlock(
+    (transp_conv): Convolution(
+      (conv): ConvTranspose3d(48, 24, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    )
+    (conv_block): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(48, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(24, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (conv3): Convolution(
+        (conv): Conv3d(48, 24, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+      )
+      (norm3): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (decoder1): UnetrUpBlock(
+    (transp_conv): Convolution(
+      (conv): ConvTranspose3d(24, 24, kernel_size=(2, 2, 2), stride=(2, 2, 2), bias=False)
+    )
+    (conv_block): UnetResBlock(
+      (conv1): Convolution(
+        (conv): Conv3d(48, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (conv2): Convolution(
+        (conv): Conv3d(24, 24, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      )
+      (lrelu): LeakyReLU(negative_slope=0.01, inplace=True)
+      (norm1): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (norm2): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+      (conv3): Convolution(
+        (conv): Conv3d(48, 24, kernel_size=(1, 1, 1), stride=(1, 1, 1), bias=False)
+      )
+      (norm3): InstanceNorm3d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)
+    )
+  )
+  (out): UnetOutBlock(
+    (conv): Convolution(
+      (conv): Conv3d(24, 3, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+    )
+  )
+)
+criterion:BCEDiceLoss(
+  (bce): BCEWithLogitsLoss()
+  (dice): DiceLoss()
+)
+optimizer:Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 5e-06
+    maximize: False
+    weight_decay: 0
+)
+scheduler:<torch.optim.lr_scheduler.ReduceLROnPlateau object at 0x7fc5f3b33e60>
+accumulation_steps:4
+phases:['train', 'val']
+num_epochs:50
+dataloaders:{'train': <torch.utils.data.dataloader.DataLoader object at 0x7fc5f2f03800>, 'val': <torch.utils.data.dataloader.DataLoader object at 0x7fc5f3b18800>, 'test': <torch.utils.data.dataloader.DataLoader object at 0x7fc5f2f03740>}
+best_loss:0.19589730647374998
+losses:{'train': [1.4391047451432666, 1.246007941068352, 1.1213735478005935, 1.0241382611568437, 0.9372159757088345, 0.8560955635495059, 0.7676227700121049, 0.6636331262697285, 0.5643620699530771, 0.47676563750201756, 0.4059275848783921, 0.3538371684886657, 0.31615120501119376, 0.2848056476605709, 0.27656840836140595, 0.24966521419499763, 0.24451725054603113, 0.22973678309201287, 0.23054825647702235, 0.22905207453685114, 0.2227168231352654, 0.2155248613411936, 0.20701640705531993, 0.19875823488253605, 0.19644706376151894, 0.19551404370101233, 0.199011437509903, 0.18778904756892317, 0.18383521017239574, 0.19120703640432865, 0.18947402954441514, 0.17882570944471504, 0.17105901969363027, 0.1660713082313991, 0.16504034160604494, 0.16359430799409463, 0.16307776047363026, 0.1625980067955677, 0.16198916985394837, 0.1615294132367513, 0.16077325252299074, 0.15986235152235956, 0.15924635141408036, 0.1590999660326501, 0.1590573227904142, 0.15891119687616145, 0.15888579152949409, 0.15886265254745918, 0.1587690238207012, 0.1587099683658705], 'val': [1.3219597946922734, 1.1780664336006597, 1.0733978545890663, 0.979217491059933, 0.8968610010057125, 0.8225106012146428, 0.7181587646592338, 0.6116174858696056, 0.526296022927986, 0.4309667573784882, 0.4066889572818324, 0.35543662478339, 0.30469718406785207, 0.2897040285872963, 0.2755076729182927, 0.26234609015145394, 0.2578607086303099, 0.24895612909546438, 0.24444386461433373, 0.24237553648791224, 0.2530359481022043, 0.2553919507366306, 0.22069242217068402, 0.22749410471263923, 0.22178113727637058, 0.2122986819946541, 0.21502971649169922, 0.21090711723521072, 0.2066987468948904, 0.22426417976055504, 0.20835616327119325, 0.20731964510566783, 0.19901377173527232, 0.19959330432257563, 0.19723019861387756, 0.1985144591275251, 0.19758512656081398, 0.19635346138252402, 0.19641597976662079, 0.19638388547694907, 0.19987692810454458, 0.19707993207112798, 0.1964392309200089, 0.19618988993032924, 0.19605374772031353, 0.19596408532475526, 0.19607070200848128, 0.19589756977445674, 0.19603610572949895, 0.19589730647374998]}
+dice_scores:{'train': [0.23605408, 0.5480276, 0.6355707, 0.64151955, 0.6614643, 0.67458344, 0.6880906, 0.72665596, 0.7473961, 0.7629842, 0.7828367, 0.79013956, 0.79914784, 0.8077428, 0.8006605, 0.81658924, 0.8148982, 0.82246983, 0.8174988, 0.8137669, 0.8187986, 0.8229193, 0.8286313, 0.8335935, 0.8347545, 0.8351276, 0.8288182, 0.8386967, 0.8414816, 0.8339767, 0.8354009, 0.8441258, 0.8505667, 0.85510695, 0.8561966, 0.8575784, 0.8580882, 0.8585264, 0.85905266, 0.8594082, 0.8601736, 0.8609298, 0.8615408, 0.86171895, 0.86175, 0.86188734, 0.8619173, 0.8619509, 0.86199486, 0.8620606], 'val': [0.46907344, 0.67015505, 0.69090307, 0.6957069, 0.6902726, 0.6524345, 0.7261151, 0.708359, 0.7215815, 0.76524013, 0.7678021, 0.77345353, 0.78987753, 0.78447896, 0.7886661, 0.79607105, 0.79234064, 0.79790753, 0.79927003, 0.79619884, 0.78779995, 0.7836273, 0.81072915, 0.80308837, 0.8091087, 0.81500095, 0.8110421, 0.81450135, 0.8175324, 0.8011496, 0.8155527, 0.81534, 0.8228256, 0.8223232, 0.8244605, 0.82330334, 0.82418, 0.82521564, 0.8252261, 0.8252213, 0.82174844, 0.82445794, 0.82502896, 0.8252463, 0.8253757, 0.8254613, 0.8253818, 0.82554907, 0.825409, 0.82552475]}
+jaccard_scores:{'train': [0.1457351, 0.39991468, 0.48991585, 0.49606875, 0.51690674, 0.5333742, 0.5499889, 0.59365916, 0.6168509, 0.6348747, 0.65888166, 0.66916895, 0.67995715, 0.6899913, 0.6793536, 0.70173347, 0.6983205, 0.707978, 0.70154667, 0.698291, 0.70457405, 0.7096613, 0.71601224, 0.7238341, 0.7250062, 0.72633123, 0.71751726, 0.73028624, 0.73390216, 0.72476304, 0.72608405, 0.73814654, 0.7467362, 0.75298285, 0.75459874, 0.75649524, 0.75722075, 0.7579645, 0.75858366, 0.75919, 0.76007366, 0.76143116, 0.7622302, 0.76245093, 0.7624914, 0.7626527, 0.76270264, 0.7627323, 0.7628174, 0.76289475], 'val': [0.31862348, 0.5245149, 0.54697853, 0.54853135, 0.54853326, 0.5127212, 0.59000134, 0.57403487, 0.5843468, 0.64044225, 0.63915974, 0.6484427, 0.6693716, 0.6627292, 0.6660198, 0.67485356, 0.6709956, 0.6769344, 0.6781426, 0.67699534, 0.66359305, 0.6569315, 0.6945263, 0.68464905, 0.6920087, 0.70005196, 0.6954592, 0.69999635, 0.7029633, 0.6833701, 0.7010203, 0.7011139, 0.71033716, 0.7096624, 0.7125508, 0.7110176, 0.71238184, 0.7138342, 0.71382606, 0.71374255, 0.70936817, 0.7129825, 0.7137376, 0.7140162, 0.7141728, 0.7142785, 0.71417207, 0.7143901, 0.71420705, 0.7143705]}
+last_completed_run_time:4:40:22.211482
+parameter_count:15639711
