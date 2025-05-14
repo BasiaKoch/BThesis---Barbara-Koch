@@ -1,22 +1,6 @@
-/*
-=====================================================================================
- Dataset Fingerprint File — `dataset_fingerprint.json`
 
- This file summarizes key statistical and structural properties of the BraTS2020 
- dataset **after preprocessing and cropping**, as used in this segmentation project.
-
- 📊 Contents:
- - Foreground intensity distribution per input modality (channels 0–3)
- - Median relative size of the foreground region after cropping
- - 3D shape dimensions of cropped volumes across all cases
- - Spacing (voxel resolution) information per scan
-
- 🧠 Purpose:
- Provides insight into intensity ranges, spatial characteristics, and dataset 
- normalization, which is essential for reproducibility and model transferability.
-=====================================================================================
-*/
 {
+   "_description": "=====================================================================================\n Dataset Fingerprint File — `dataset_fingerprint.json`\n\n This file summarizes key statistical and structural properties of the BraTS2020 \n dataset after preprocessing and cropping, as used in this segmentation project.\n\n 📊 Contents:\n - Foreground intensity distribution per input modality (channels 0–3)\n - Median relative size of the foreground region after cropping\n - 3D shape dimensions of cropped volumes across all cases\n - Spacing (voxel resolution) information per scan\n\n 🧠 Purpose:\n Provides insight into intensity ranges, spatial characteristics, and dataset \n normalization, which is essential for reproducibility and model transferability.\n=====================================================================================",
     "foreground_intensity_properties_per_channel": {
         "0": {
             "max": 13132.0,
