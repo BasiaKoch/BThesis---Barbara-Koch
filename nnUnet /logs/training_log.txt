@@ -1,3 +1,15 @@
+# ============================================================================
+# nnU-Net Training Log – April 20, 2025
+#
+# This log file records the full training trace of the 3D full-resolution nnU-Net
+# model trained on the BraTS2020 dataset. It includes:
+# - Model configuration & preprocessing pipeline
+# - Epoch-wise training/validation loss and pseudo Dice scores
+# - Learning rate schedule
+# - Best EMA Dice values and progress tracking
+#
+# Useful for performance analysis, reproducibility, and model selection.
+# ============================================================================
 
 #######################################################################
 Please cite the following paper when using nnU-Net:
