@@ -1,3 +1,19 @@
+## 🧾 Model Properties: `swinUNETR_trainer_properties.txt`
+
+This file contains a snapshot of the **Swin UNETR model architecture, training configuration, and performance metrics** from the final training run.
+
+### Contents:
+- 🔧 **Model Architecture:** Full Swin UNETR setup with encoder-decoder blocks, based on 3D medical image segmentation.
+- 📉 **Training & Validation Losses:** Logs for 50 epochs, including Dice and Jaccard scores.
+- 🧠 **Criterion:** Composite loss function using `BCEDiceLoss` (BCE + Dice).
+- ⚙️ **Optimizer & Scheduler:** Adam optimizer with `ReduceLROnPlateau` learning rate scheduler.
+- 📊 **Final Performance:**
+  - Best validation loss: `0.1959`
+  - Final validation Dice score: `0.8255`
+  - Parameters: ~15.6 million
+
+This file can be used for **experiment reproduction, model inspection**, or simply understanding the configuration and convergence behavior of the Swin UNETR model used in this project.
+
 device:cuda
 display_plot:True
 net:SwinUNETR(
