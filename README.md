@@ -32,4 +32,16 @@ BThesis---Barbara-Koch/
 ├── testing_significance/       # Scripts for statistical analysis (e.g., Wilcoxon test)
 ├── synthetic_visualization.py  # Script to simulate and visualize Dice/IoU distributions
 └── README.md                   # You're here!
+```
+# 🔗 Download Pretrained Weights
+
+The pretrained **Swin UNETR** weights used in this project can be downloaded from the link below:
+
+👉 [Download `your_best_model_20250414-004601.pth`](https://drive.google.com/file/d/1lEjkvGCFt4yLCkP-OvhpKjnd4zrHOVT-/view?usp=sharing)
+
+After downloading, place the file in your project directory (e.g., `./weights/`) and load it using:
+
+```python
+model.load_state_dict(torch.load("weights/your_best_model_20250414-004601.pth"))
+
 
