@@ -1,3 +1,19 @@
+# =====================================================================================
+# Swin UNETR Trainer Properties Summary
+# 
+# This file contains a complete snapshot of the model configuration, architecture, 
+# optimizer settings, and performance metrics from the final training run.
+#
+# 🧠 Model: Swin UNETR for 3D multimodal brain tumor segmentation (BraTS2020)
+# 🔧 Loss Function: BCEDiceLoss (combining Binary Cross Entropy and Dice loss)
+# ⚙️ Optimizer: Adam (lr = 5e-6) with ReduceLROnPlateau scheduler
+# 📊 Performance:
+#     - Best validation loss: 0.1959
+#     - Final validation Dice score: 0.8255
+#     - Parameters: 15,639,711
+# 📅 Epochs trained: 50
+# 📁 Use case: Configuration backup for reproducibility, evaluation, or inspection.
+# =====================================================================================
 
 device:cuda
 display_plot:True
