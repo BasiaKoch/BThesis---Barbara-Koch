@@ -33,15 +33,19 @@ BThesis---Barbara-Koch/
 ├── synthetic_visualization.py  # Script to simulate and visualize Dice/IoU distributions
 └── README.md                   # You're here!
 ```
-# 🔗 Download Pretrained Weights
+## 🧠 Pretrained Model Weights
 
-The pretrained **Swin UNETR** weights used in this project can be downloaded from the link below:
+The pretrained weights for both segmentation models used in this project are available below:
 
-👉 [Download `your_best_model_20250414-004601.pth`](https://drive.google.com/file/d/1lEjkvGCFt4yLCkP-OvhpKjnd4zrHOVT-/view?usp=sharing)
+- 🌀 **Swin UNETR** (Transformer-based):
+  [Download `your_best_model_20250414-004601.pth`](https://drive.google.com/file/d/1lEjkvGCFt4yLCkP-OvhpKjnd4zrHOVT-/view?usp=drive_link)
 
-After downloading, place the file in your project directory (e.g., `./weights/`) and load it using:
+- 🧩 **nnU-Net** (CNN-based):
+  [Download `nnunet_best_model.pth`](https://drive.google.com/file/d/1HCK1qAsZj2TgxeGd8Rg4gVG81Z8gZodV/view?usp=sharing)
+
+After downloading, place the weights in a suitable directory (e.g., `./weights/`) and update your loading scripts accordingly:
 
 ```python
+# Example
 model.load_state_dict(torch.load("weights/your_best_model_20250414-004601.pth"))
-
 
