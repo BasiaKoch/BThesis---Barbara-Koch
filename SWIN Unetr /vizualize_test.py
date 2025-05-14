@@ -3,7 +3,7 @@
 # https://github.com/Inc0mple/3D_Brain_Tumor_Seg_V2/blob/master/VizEval_Single_Notebook.ipynb
 #
 # Original author: https://github.com/Inc0mple
-# License: Apache License 2.0 (if applicable, otherwise follow original repo license)
+# License: Apache License 2.0 
 #
 # Modifications have been made for use in the BraTS2020 evaluation workflow
 # and to suit the objectives of this thesis project.
