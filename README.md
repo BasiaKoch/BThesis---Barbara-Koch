@@ -20,6 +20,13 @@ The goal of this thesis was to evaluate and compare the performance of CNN-based
 
 By training both models under the same resource constraints and without pretrained weights, the project explores their strengths, limitations, and suitability for different clinical objectives.
 
+##📦 Dataset  
+This project uses the [BraTS2020 dataset](https://www.kaggle.com/datasets/awsaf49/brats20-dataset-training-validation), downloaded via **Kaggle**. The dataset consists of **3D multimodal MRI scans** of patients diagnosed with gliomas, annotated by experts. Each case includes four imaging modalities:
+
+- FLAIR  
+- T1-weighted  
+- T1-weighted contrast-enhanced (T1ce)  
+- T2-weighted  
 ---
 
 ## 🗂 Repository Structure
