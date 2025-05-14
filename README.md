@@ -24,7 +24,6 @@ By training both models under the same resource constraints and without pretrain
 
 ## 🗂 Repository Structure
 
-```text
 
 This repository contains the full codebase and training pipeline for the bachelor’s thesis project comparing **nnU-Net** and **Swin UNETR** architectures on the **BraTS2020** dataset for 3D multimodal brain tumor segmentation.
 
